@@ -45,7 +45,7 @@
             <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
                 <div id="file-js-example" class="file has-name is-boxed is-fullwidth">
                     <label class=" file-label">
-                      <input class="file-input" type="file" name="resume">
+                      <input class="file-input" type="file" name="photo">
                       <span class="file-cta">
                         <span class="file-icon">
                           <i class="fas fa-upload"></i>
@@ -60,7 +60,7 @@
                     </label>
                   </div>
                   <br>
-                <input class="button is-primary" type="submit"/>
+                <input class="button is-warning" type="submit"/>
             </form>
         </div>
         <br>
@@ -69,14 +69,14 @@
                 <form action="{{ url_for('click') }}" method="POST" enctype="multipart/form-data">
                     <div class="field">
                         <p class="control has-icons-left">
-                          <span class="select">
+                          <span class="select is-primary">
                             <select>
                               <option>Phase 1</option>
                               <option>Phase 2</option>
                               <option>Phase 3</option>
                             </select>
                           </span>
-                          <span class="icon is-small is-left">
+                          <span class="icon is-small is-left has-text-primary">
                             <i class="fas fa-chart-pie"></i>
                           </span>
                         </p>
