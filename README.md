@@ -5,6 +5,7 @@ A microstructure analysis tool that automatically annotates 2d structures with g
 ```
 git clone https://github.com/jaymody/microscan.git
 pip install -r requirements.txt
+cd flaskapp
 python main.py
 ```
 Then, you can open up your browser to the given localhost url, and upload an image (like the one under the sample directory `sample/image_141.png`). Here's a summary of our results (you can find the full list of results in `results.pdf`).

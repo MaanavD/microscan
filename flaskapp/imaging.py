@@ -4,7 +4,8 @@ import os
 import cv2
 import numpy as np
 import seaborn as sns
-import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('agg')
 
 # pylint: disable=no-member
 
