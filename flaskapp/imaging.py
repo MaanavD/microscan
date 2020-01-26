@@ -20,10 +20,10 @@ class Grain:
     def __init__(self, contour):
         self.contour = contour
         self.area = cv2.contourArea(self.contour)
-        self.diameter = (self.area / (4 * np.pi))**0.5
+        self.diameter = (4 * self.area / np.pi)**0.5
 
 class MicroStructure:
-    def __init__(self, image_path, scale=100):
+    def __init__(self, image_path, scale=1000):
         self.image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
         self.scale = scale
         self.shape = self.image.shape
@@ -37,8 +37,8 @@ class MicroStructure:
         self.light_fraction = self.compute_phase_fraction(self.white_mask)
         self.line_fraction = self.compute_phase_fraction(self.line_mask)
 
-        self.average_grain_area = (sum([g.area for g in self.grains]) / self.num_pixels) * self.scale
-        self.average_grain_diameter = (sum([g.diameter for g in self.grains]) / self.num_pixels) * self.scale
+        self.average_grain_area = (sum([g.area for g in self.grains]) / len(self.grains) / self.num_pixels) * (self.scale**2)
+        self.average_grain_diameter = (sum([g.diameter for g in self.grains]) / len(self.grains) / self.shape[0]) * self.scale
 
     def get_masks(self):
         # dark mask
