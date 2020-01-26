@@ -29,8 +29,9 @@ class MicroStructure:
         self.shape = self.image.shape
         self.num_pixels = len(self.image.flatten())
 
-        self.dark_mask, self.white_mask, self.line_mask = self.get_masks()
         self.grains = self.get_grains()
+        self.grain_mask = self.get_grain_mask(self.grains)
+        self.dark_mask, self.white_mask, self.line_mask = self.get_masks()
 
         self.dark_fraction = self.compute_phase_fraction(self.dark_mask)
         self.light_fraction = self.compute_phase_fraction(self.white_mask)
@@ -147,6 +148,11 @@ class MicroStructure:
 
         return grains
 
+    def get_grain_mask(self, grains):
+        grain_mask = np.zeros(self.shape)
+        cv2.drawContours(grain_mask, [g.contour for g in self.grains], -1, 255, 1)
+        return grain_mask
+
     def compute_phase_fraction(self, mask):
         pixels = mask.flatten()
         white_pixels = len([p for p in pixels if p])
@@ -159,11 +165,13 @@ def imaging_endpoint(image_path, output_dir):
     dark_mask_path = os.path.join(output_dir, "dark_mask.png")
     white_mask_path = os.path.join(output_dir, "white_mask.png")
     line_mask_path = os.path.join(output_dir, "line_mask.png")
+    grain_mask_path = os.path.join(output_dir, "grain_mask.png")
     distplot_path = os.path.join(output_dir, "distplot.png")
 
     cv2.imwrite(dark_mask_path, mc.dark_mask)
     cv2.imwrite(white_mask_path, mc.white_mask)
     cv2.imwrite(line_mask_path, mc.line_mask)
+    cv2.imwrite(grain_mask_path, mc.grain_mask)
     sns_plot = sns.distplot([g.diameter for g in mc.grains])
     sns_plot.get_figure().savefig(distplot_path)
 
@@ -171,6 +179,7 @@ def imaging_endpoint(image_path, output_dir):
         "dark_mask_path": dark_mask_path,
         "white_mask_path": white_mask_path,
         "line_mask_path": line_mask_path,
+        "grain_mask_path": grain_mask_path,
         "distplot_path": distplot_path,
         "dark_fraction": mc.dark_fraction,
         "light_fraction": mc.light_fraction,
@@ -181,4 +190,4 @@ def imaging_endpoint(image_path, output_dir):
 
 # main
 if __name__ == "__main__":
-    imaging_endpoint("../data/base microstructure/image_100.png", "temp_test")
+    print(imaging_endpoint("../data/base microstructure/image_0.png", "../temp_test"))
