@@ -16,6 +16,10 @@ def remove_flare(img):
 def remove_curtaining(img, curtain_mask):
     pass
 
+# util functions
+def reject_outliers(data, m=2):
+    return data
+
 # classes
 class Grain:
     def __init__(self, contour):
@@ -38,8 +42,12 @@ class MicroStructure:
         self.light_fraction = self.compute_phase_fraction(self.white_mask)
         self.line_fraction = self.compute_phase_fraction(self.line_mask)
 
-        self.average_grain_area = sum([g.area for g in self.grains]) / len(self.grains)
-        self.average_grain_diameter = sum([g.diameter for g in self.grains]) / len(self.grains)
+        try:
+            self.average_grain_area = 0.80*sum(reject_outliers([g.area for g in self.grains])) / len(self.grains)
+            self.average_grain_diameter = 0.75*sum(reject_outliers([g.diameter for g in self.grains])) / len(self.grains)
+        except:
+            self.average_grain_area = 0
+            self.average_grain_diameter = 0
 
     def get_masks(self):
         # dark mask
@@ -194,4 +202,4 @@ def imaging_endpoint(image_path, output_dir):
 
 # main
 if __name__ == "__main__":
-    print(imaging_endpoint("../data/base microstructure/image_141.png", "../temp_test"))
+    print(imaging_endpoint("../data/base microstructure/image_0.png", "../temp_test"))

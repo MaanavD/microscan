@@ -27,4 +27,8 @@ Our algorithms are able to predict phase fractions to an accuracy of ~1% for dar
 
 ## Scraped Data
 We also wanted to test our image modeling against real data, so we built a web scraper to scrape some online data:
-![screen_rec](sample/screen.gif)
+![scraped](sample/screen.gif)
+
+## Real Data Test
+Here were the results of the algorithm run on one of the scraped data points (more real results can be found in `results_real.pdf`):
+![real](sample/real_sample.png)
