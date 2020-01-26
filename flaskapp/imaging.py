@@ -176,6 +176,7 @@ def imaging_endpoint(image_path, output_dir):
     cv2.imwrite(grain_mask_path, cv2.resize(mc.grain_mask, (350, 350)))
     sns_plot = sns.distplot([g.diameter for g in mc.grains])
     sns_plot.get_figure().savefig(distplot_path)
+    matplotlib.pyplot.clf()
     cv2.imwrite(distplot_path, cv2.resize(cv2.imread(distplot_path), (350, 350)))
 
     return {
