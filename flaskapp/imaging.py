@@ -163,11 +163,12 @@ class MicroStructure:
 def imaging_endpoint(image_path, output_dir):
     mc = MicroStructure(image_path)
 
-    dark_mask_path = os.path.join(output_dir, "dark_mask.png")
-    white_mask_path = os.path.join(output_dir, "white_mask.png")
-    line_mask_path = os.path.join(output_dir, "line_mask.png")
-    grain_mask_path = os.path.join(output_dir, "grain_mask.png")
-    distplot_path = os.path.join(output_dir, "distplot.png")
+    base = os.path.basename(image_path).split(".")[0]
+    dark_mask_path = os.path.join(output_dir, base + "_dark_mask.png")
+    white_mask_path = os.path.join(output_dir, base + "_white_mask.png")
+    line_mask_path = os.path.join(output_dir, base + "_line_mask.png")
+    grain_mask_path = os.path.join(output_dir, base + "_grain_mask.png")
+    distplot_path = os.path.join(output_dir, base + "_distplot.png")
 
     cv2.imwrite(dark_mask_path, cv2.resize(mc.dark_mask, (350, 350)))
     cv2.imwrite(white_mask_path, cv2.resize(mc.white_mask, (350, 350)))

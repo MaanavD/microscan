@@ -3,6 +3,8 @@ data/
 Gauge347/
 _*.ipynb
 .vscode/
+flaskapp/static/res
+flaskapp/static/img
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
