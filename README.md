@@ -23,7 +23,13 @@ Individual Grain Boundaries
 ![gif](sample/ouput.gif)
 
 ## Error
-Our algorithms are able to predict phase fractions to an accuracy of ~1% for dark phases, ~5% for white phases, and ~2% for the striped phases (as seen in `results.pdf`).
+Our algorithms are able to predict phase fractions to an accuracy of 
+- `~1% for dark phases`
+- `~5% for white phases`
+- `~2% for the striped phases`.
+(see `results.pdf`)
+
+We also had an error rate of `~5% for grain sizes`.
 
 ## Scraped Data
 We also wanted to test our image modeling against real data, so we built a web scraper to scrape some online data:
