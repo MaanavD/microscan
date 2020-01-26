@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<link rel="stylesheet" />
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>MicroScan</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item">
+        <img src="./../static/Logo2.png">
+      </a>
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+        data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start navbar-item">
+        <a href="{{ url_for('home') }}" class="navbar-item">
+          <strong>Home</strong>
+        </a>
+        <a href="{{ url_for('scraper') }}" class="navbar-item">
+          Scraper
+        </a>
+        <a href="{{ url_for('about') }}" class="button is-warning">
+          Upload
+        </a>
+      </div>
+    </div>
+  </nav>
+  <section class="hero is-dark is-fullheight-with-navbar">
+    <div class="">
+      <div class="container">
+        <br><br>
+        <p class="title is-size-1">
+          Our scraper is built using <strong>Selenium</strong>.
+          <br>
+          <br>
+        </p>
+        <div class="columns is-centered">
+          <img class="" alt="temp" src="./../static/screen.gif">
+        </div>
+        <section class="hero is-info">
+          <div class="hero-body">
+            <div class="container">
+              <h1 class="title">
+                Selenium code
+              </h1>
+              <code class="has-text-info">
+                from selenium import webdriver <br>
+                from selenium.webdriver.common.action_chains import ActionChains <br>
+                from selenium.webdriver.common.keys import Keys <br>
+                <br>
+                from PIL import Image <br>
+                from io import BytesIO <br>
+                <br>
+                import requests <br>
+                <br>
+                driver = webdriver.Chrome() <br>
+                driver.get("https://google.com") <br>
+                <br>
+                print(driver.title) <br>
+                print(driver.current_url) <br>
+                <br>
+                head_url = "https://creptimg.nims.go.jp/CreptImg/ImageDisp1.cgi?/home/dbmaster/Drawing/fo/ZZ0000" <br>
+                tail_url = ".FOB%20%20%20%20%20%220%20%20%20%20%20%20%20%20%20%20" <br>
+                <br>
+                img_maj = "ABCDEFGH" <br>
+                img_min = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" <br>
+                <br>
+                def login(): <br>
+                  driver.get("https://creptimg.nims.go.jp/CreptImg/ImageFrame.cgi?88&4&3&99&&0&0") <br>
+                  driver.find_element_by_id("username").send_keys("&&_USERNAME_HERE_&&") <br>
+                  driver.find_element_by_id("password").send_keys("&&_PASSWORD_HERE_&&") <br>
+                  driver.find_element_by_id("kc-login").click() <br>
+                  <br>
+                def base_url(): <br>
+                  driver.get("https://creptimg.nims.go.jp/CreptImg/ImageFrame.cgi?88&4&3&99&&0&0") <br>
+
+                def photo_url(maj, min):  <br>
+                  url = head_url + maj + min + tail_url <br>
+                  driver.get(url) <br>
+
+                def save_img(img_name):<br>
+                  img = driver.find_element_by_tag_name('img')<br>
+                  src = img.get_attribute('src')<br>
+                  print(src)<br>
+                  driver.save_screenshot(img_name)<br>
+                  <br>
+                def loop_images():<br>
+                  for maj_letter in img_maj:<br>
+                    for min_letter in img_min:<br>
+                      img_name = "Images/" + maj_letter + min_letter + ".png"<br>
+                      photo_url(maj_letter, min_letter)<br>
+                      save_img(img_name)<br>
+                      <br>
+                if __name__ == "__main__":<br>
+                  input("Press Enter To Continue...")<br>
+                  base_url()<br>
+                  login()<br>
+                  loop_images()
+                      </code>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </section>
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    // Get all "navbar-burger" elements
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+    // Check if there are any navbar burgers
+    if ($navbarBurgers.length > 0) {
+
+      // Add a click event on each of them
+      $navbarBurgers.forEach(el => {
+        el.addEventListener('click', () => {
+
+          // Get the target from the "data-target" attribute
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+
+          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+
+        });
+      });
+    }
+
+  });</script>
+
+</html>

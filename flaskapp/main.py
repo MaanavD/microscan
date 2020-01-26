@@ -17,6 +17,10 @@ results_dir = "./static/res/"
 def home():
     return render_template("home.html")
 
+@app.route("/scraper")
+def scraper():
+    return render_template("scraper.html")
+
 @app.route("/about")
 def about():
     return render_template("about.html",  microscan_img_origin = "https://via.placeholder.com/300x300.png", microscan_img_dark = "https://via.placeholder.com/300x300.png", microscan_img_light = "https://via.placeholder.com/300x300.png", microscan_img_line = "https://via.placeholder.com/300x300.png", microscan_img_dist = "https://via.placeholder.com/300x300.png", microscan_img_grain = "https://via.placeholder.com/300x300.png")
@@ -40,6 +44,8 @@ def upload():
         line_frac = round(results['line_fraction']*1000)/1000
         grain_A = round(results['average_grain_area']*1000)/1000
         grain_D = round(results['average_grain_diameter']*1000)/1000
+
+
 
         return render_template('about.html', microscan_img_origin = image_path, microscan_img_dark = dark_mask, microscan_img_light = white_mask, microscan_img_line = line_mask, microscan_img_dist = dist_plot, microscan_img_grain = grain_mask, microscan_num_diam = grain_D, microscan_num_area = grain_A, microscan_num_pfline = line_frac, microscan_num_pflight = light_frac, microscan_num_pfdark = dark_frac)
     return render_template('about.html')
