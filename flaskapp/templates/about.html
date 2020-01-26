@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>About Page</title>
-    </head>
-    <body>
-        <div>
-            <h1>Upload an image</h1>
-            <a href="{{ url_for('home') }}">Home</a>
-            <br>
-            <br>
-            <button>Upload image</button>
-            <br>
-            <br>
-            <form action="">
-                <input type="radio" name="phase1" value="phase1" aria-checked=""> Phase 1<br>
-                <input type="radio" name="phase2" value="phase2"> Phase 2<br>
-                <input type="radio" name="phase3" value="phase3"> Phase 3
-            </form>
-        </div>
-        <div>
-            <h1>Original Image</h1>
-            <img src="https://via.placeholder.com/400x300.png" />
-            <h1>Phase x</h1> 
-            <img src="https://via.placeholder.com/400x300.png" />
-            
-        </div>
-        <div>
-            <h1>Distribution Plot</h1>
-            <img src="https://via.placeholder.com/400x300.png" />
-        </div>
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <title>About Page</title>
+</head>
+
+<body>
+    <div>
+        <h1>Upload an image</h1>
+        <a href="{{ url_for('home') }}">Home</a>
+        <br>
+        <br>
+        <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" />
+            <input type="submit" />
+        </form>
+        <br>
+        <br>
+        <form action="">
+            <input type="radio" name="phase1" value="phase1" aria-checked=""> Phase 1<br>
+            <input type="radio" name="phase2" value="phase2"> Phase 2<br>
+            <input type="radio" name="phase3" value="phase3"> Phase 3
+        </form>
+    </div>
+    <div>
+        <h1>Original Image</h1>
+        <img src="https://via.placeholder.com/400x300.png" />
+        <h1>Phase x</h1>
+        <img src="https://via.placeholder.com/400x300.png" />
+
+    </div>
+    <div>
+        <h1>Distribution Plot</h1>
+        <img src="https://via.placeholder.com/400x300.png" />
+    </div>
+</body>
+
 </html>
