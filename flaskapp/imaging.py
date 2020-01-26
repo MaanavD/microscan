@@ -37,8 +37,8 @@ class MicroStructure:
         self.light_fraction = self.compute_phase_fraction(self.white_mask)
         self.line_fraction = self.compute_phase_fraction(self.line_mask)
 
-        self.average_grain_area = (sum([g.area for g in self.grains]) / len(self.grains) / self.num_pixels) * (self.scale**2)
-        self.average_grain_diameter = (sum([g.diameter for g in self.grains]) / len(self.grains) / self.shape[0]) * self.scale
+        self.average_grain_area = sum([g.area for g in self.grains]) / len(self.grains)
+        self.average_grain_diameter = sum([g.diameter for g in self.grains]) / len(self.grains)
 
     def get_masks(self):
         # dark mask
