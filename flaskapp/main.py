@@ -21,7 +21,6 @@ def about():
 def upload():
     if request.method == 'POST' and 'photo' in request.files:
         filename = photos.save(request.files['photo'])
-        
         return render_template('about.html', phase_img = "../static/img/dog.jpg")
     return render_template('about.html')
 

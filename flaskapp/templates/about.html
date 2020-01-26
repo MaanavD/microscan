@@ -10,34 +10,110 @@
 
 <body>
     <div>
-        <h1>Upload an image</h1>
-        <a href="{{ url_for('home') }}">Home</a>
+        <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <a class="navbar-item">
+                <img src="./../static/Logo2.png">
+              </a>
+          
+              <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-start navbar-item">
+                <a href="{{ url_for('home') }}" class="navbar-item">
+                    <strong>Home</strong>
+                  </a>
+                  <a href="{{ url_for('home') }}" class="navbar-item">
+                    Scraper
+                  </a>
+                <a href="{{ url_for('about') }}" class="button is-warning">
+                    Upload
+                </a>
+              </div>
+            </div>
+          </nav>
+          <div class="container">
+
+          
+        <div class="has-text-centered">
+            <br>
+            <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+                <div id="file-js-example" class="file has-name is-boxed is-fullwidth">
+                    <label class=" file-label">
+                      <input class="file-input" type="file" name="resume">
+                      <span class="file-cta">
+                        <span class="file-icon">
+                          <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                          Upload a file
+                        </span>
+                      </span>
+                      <span class="file-name has-text-centered">
+                        Microstructure.jpg
+                      </span>
+                    </label>
+                  </div>
+                  <br>
+                <input class="button is-primary" type="submit"/>
+            </form>
+        </div>
         <br>
-        <br>
-        <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
-            <input type="file" name="photo" />
-            <input type="submit" />
-        </form>
-        <br>
-        <br>
-        <form action="{{ url_for('click') }}" method="POST" enctype="multipart/form-data">
-            <input type="radio" name="option" id="phase1" value="phase1"> Phase 1<br>
-            <input type="radio" name="option" id="phase2" value="phase2"> Phase 2<br>
-            <input type="radio" name="option" id="phase3" value="phase3"> Phase 3
-            <input type="submit" />
-        </form>
+        <div class="columns">
+            <div class="column">
+                <form action="{{ url_for('click') }}" method="POST" enctype="multipart/form-data">
+                    <div class="field">
+                        <p class="control has-icons-left">
+                          <span class="select">
+                            <select>
+                              <option>Phase 1</option>
+                              <option>Phase 2</option>
+                              <option>Phase 3</option>
+                            </select>
+                          </span>
+                          <span class="icon is-small is-left">
+                            <i class="fas fa-chart-pie"></i>
+                          </span>
+                        </p>
+                      </div>
+                </form>
+                <br><br><br>
+                <h1 class="is-size-3">Original Image</h1>
+                <img src="https://via.placeholder.com/400x300.png" />
+            </div>
+            <div class="column">
+                <h1 class="is-size-3">Phase x</h1>
+                <img src="https://via.placeholder.com/400x300.png" />
+                
+                <img src="{{ phase_img }}" alt=""/>
+                <h1 class="is-size-3">Distribution Plot</h1>
+        <img src="https://via.placeholder.com/400x300.png" />
+            </div>
+            
+        </div>
     </div>
     <div>
-        <h1>Original Image</h1>
-        <img src="https://via.placeholder.com/400x300.png" />
-        <h1>Phase x</h1>
-        <img src="{{ phase_img }}" alt=""/>
+        
+       
 
     </div>
     <div>
-        <h1>Distribution Plot</h1>
-        <img src="https://via.placeholder.com/400x300.png" />
+        
     </div>
+</div>
 </body>
-
+<script>
+    const fileInput = document.querySelector('#file-js-example input[type=file]');
+    fileInput.onchange = () => {
+      if (fileInput.files.length > 0) {
+        const fileName = document.querySelector('#file-js-example .file-name');
+        fileName.textContent = fileInput.files[0].name;
+      }
+    }
+  </script>
 </html>
