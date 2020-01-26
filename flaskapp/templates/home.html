@@ -8,7 +8,73 @@
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     </head>
     <body>
-        <h1>Welcome to MicroScan</h1>
-        <a href="{{ url_for('about') }}">Upload an image</a>
+        <!-- Navbar -->
+        <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+              <a class="navbar-item">
+                <img src="./../static/Logo2.png">
+              </a>
+          
+              <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+              </a>
+            </div>
+          
+            <div id="navbarBasicExample" class="navbar-menu">
+              <div class="navbar-start navbar-item">
+                <a href="{{ url_for('home') }}" class="navbar-item">
+                    <strong>Home</strong>
+                  </a>
+                  <a href="{{ url_for('home') }}" class="navbar-item">
+                    Scraper
+                  </a>
+                <a href="{{ url_for('about') }}" class="button is-warning">
+                    Upload
+                </a>
+              </div>
+            </div>
+          </nav>
+          <section class="hero is-dark is-fullheight-with-navbar">
+            <div class="hero-body">
+              <div class="container">
+                <p class="title is-size-1">
+                  Welcome to MicroScan.
+                  <br>
+                  <br>
+                </p>
+                <p class="subtitle">Click 'Upload' to upload an image of a Microstructure. <br>
+                    Click 'Scraper' for more information about our database scraper.
+                </p>
+              </div>
+            </div>
+          </section>
     </body>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+// Get all "navbar-burger" elements
+const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+// Check if there are any navbar burgers
+if ($navbarBurgers.length > 0) {
+
+  // Add a click event on each of them
+  $navbarBurgers.forEach( el => {
+    el.addEventListener('click', () => {
+
+      // Get the target from the "data-target" attribute
+      const target = el.dataset.target;
+      const $target = document.getElementById(target);
+
+      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+      el.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+
+    });
+  });
+}
+
+});</script>
 </html>
