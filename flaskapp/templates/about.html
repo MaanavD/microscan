@@ -20,17 +20,18 @@
         </form>
         <br>
         <br>
-        <form action="">
-            <input type="radio" name="phase1" value="phase1" aria-checked=""> Phase 1<br>
-            <input type="radio" name="phase2" value="phase2"> Phase 2<br>
-            <input type="radio" name="phase3" value="phase3"> Phase 3
+        <form action="{{ url_for('click') }}" method="POST" enctype="multipart/form-data">
+            <input type="radio" name="option" id="phase1" value="phase1"> Phase 1<br>
+            <input type="radio" name="option" id="phase2" value="phase2"> Phase 2<br>
+            <input type="radio" name="option" id="phase3" value="phase3"> Phase 3
+            <input type="submit" />
         </form>
     </div>
     <div>
         <h1>Original Image</h1>
         <img src="https://via.placeholder.com/400x300.png" />
         <h1>Phase x</h1>
-        <img src="https://via.placeholder.com/400x300.png" />
+        <img src="{{ phase_img }}" alt=""/>
 
     </div>
     <div>
