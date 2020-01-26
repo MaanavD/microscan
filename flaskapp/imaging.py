@@ -168,12 +168,13 @@ def imaging_endpoint(image_path, output_dir):
     grain_mask_path = os.path.join(output_dir, "grain_mask.png")
     distplot_path = os.path.join(output_dir, "distplot.png")
 
-    cv2.imwrite(dark_mask_path, mc.dark_mask)
-    cv2.imwrite(white_mask_path, mc.white_mask)
-    cv2.imwrite(line_mask_path, mc.line_mask)
-    cv2.imwrite(grain_mask_path, mc.grain_mask)
+    cv2.imwrite(dark_mask_path, cv2.resize(mc.dark_mask, (350, 350)))
+    cv2.imwrite(white_mask_path, cv2.resize(mc.white_mask, (350, 350)))
+    cv2.imwrite(line_mask_path, cv2.resize(mc.line_mask, (350, 350)))
+    cv2.imwrite(grain_mask_path, cv2.resize(mc.grain_mask, (350, 350)))
     sns_plot = sns.distplot([g.diameter for g in mc.grains])
     sns_plot.get_figure().savefig(distplot_path)
+    cv2.imwrite(distplot_path, cv2.resize(cv2.imread(distplot_path), (350, 350)))
 
     return {
         "dark_mask_path": dark_mask_path,
@@ -190,4 +191,4 @@ def imaging_endpoint(image_path, output_dir):
 
 # main
 if __name__ == "__main__":
-    print(imaging_endpoint("../data/base microstructure/image_0.png", "../temp_test"))
+    print(imaging_endpoint("../data/base microstructure/image_141.png", "../temp_test"))
