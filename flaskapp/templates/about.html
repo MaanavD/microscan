@@ -67,7 +67,7 @@
           </div>
           <div class="column"> 
             <h1 class="is-size-3">Original Image</h1>
-            <img src="https://via.placeholder.com/300x300.png" />
+            <img src="{{ microscan_img_origin }}" alt="https://via.placeholder.com/300x300.png" />
           </div>
         </div>
         
@@ -90,11 +90,11 @@
             <div class="card-content">
               <div class="content">
                 <p>
-                  Average grain area: <strong id="gArea">1</strong><br>
-                  Average grain diameter: <strong id="gDia">2</strong><br>
-                  Phase fraction (dark): <strong id="pDark">3</strong><br>
-                  Phase fraction (light): <strong id="pLight">4</strong><br>
-                  Phase fraction (lines): <strong id="pLine">5</strong><br>
+                  Average grain area: <strong id="gArea">{{ microscan_num_area }}</strong><br>
+                  Average grain diameter: <strong id="gDia">{{ microscan_num_diam }}</strong><br>
+                  Phase fraction (dark): <strong id="pDark">{{ microscan_num_pfdark }}</strong><br>
+                  Phase fraction (light): <strong id="pLight">{{ microscan_num_pflight }}</strong><br>
+                  Phase fraction (lines): <strong id="pLine">{{ microscan_num_pfline }}</strong><br>
                 </p>
 
               </div>
@@ -102,25 +102,25 @@
           </div>
           <br><br>
           <h1 class="is-size-3">Grain Mask</h1>
-          <img src="https://via.placeholder.com/300x300.png" />
+          <img src="{{ microscan_img_grain }}" alt="https://via.placeholder.com/300x300.png" />
           
           
         </div>
         <div class="column">
           <h1 class="is-size-3">Dark Phase</h1>
-          <img src="https://via.placeholder.com/300x300.png" />
+          <img src="{{ microscan_img_dark }}" alt="https://via.placeholder.com/300x300.png" />
 
-          <img src="{{ phase_img }}" alt="" />
+          <img src="{{ phase_img_line }}" alt="" />
           <h1 class="is-size-3">Line Phase</h1>
-          <img src="https://via.placeholder.com/300x300.png" />
+          <img src="{{ microscan_img_line }}" alt="https://via.placeholder.com/300x300.png" />
         </div>
         <div class="column">
           <h1 class="is-size-3">Light Phase</h1>
-          <img src="https://via.placeholder.com/300x300.png" />
+          <img src="{{ microscan_img_light }}" alt="https://via.placeholder.com/300x300.png" />
 
           <img src="{{ phase_img }}" alt="" />
           <h1 class="is-size-3">Distribution Plot</h1>
-          <img src="https://via.placeholder.com/300x300.png" />
+          <img src="{{ microscan_img_dist }}" alt="https://via.placeholder.com/300x300.png" />
         </div>
 
       </div>
