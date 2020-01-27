@@ -1,4 +1,6 @@
 # MicroScan
+Created by Maanav Dalal, Jay Mody, Graham Power for Deltahacks 6
+
 A microstructure analysis tool that automatically annotates 2d structures with grain size, distributions, phase masks, and phase fractions using image modeling.
 
 ## Usage
