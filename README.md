@@ -1,5 +1,5 @@
 # MicroScan
-Created by Maanav Dalal, Jay Mody, Graham Power for Deltahacks 6
+Created by Maanav Dalal, Jay Mody, Graham Power for Deltahacks 6. Materials Challenge 3rd place winner.
 
 A microstructure analysis tool that automatically annotates 2d structures with grain size, distributions, phase masks, and phase fractions using image modeling.
 
